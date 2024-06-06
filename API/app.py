@@ -7,7 +7,7 @@ model = load_model(r'API\modelo_navegacao_otimizado')  # Carregar o modelo trein
 
 @app.route('/predict', methods=['POST'])
 def predict():
-    data = request.get_json(force=True)
+    data = request.get_json()
     df = pd.DataFrame([data])
     predictions = predict_model(model, data=df)
     output = predictions['Label'][0]
